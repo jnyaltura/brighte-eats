@@ -50,8 +50,8 @@ describe('Lead GraphQL API (e2e)', () => {
 
     expect(res.status).toBe(200);
     const data = res.body.data.register;
-    expect(data.name).toBe('Jane Doe');
-    expect(data.email).toBe('jane@example.com');
+    expect(data.name).toBe('Jan Pogi');
+    expect(data.email).toBe('jan@example.com');
     expect(data.services.length).toBe(2);
     expect(data.services[0].type).toBeDefined();
   });
@@ -139,7 +139,7 @@ describe('Lead GraphQL API (e2e)', () => {
     expect(res3.status).toBe(200); // GraphQL always returns 200 even on validation errors
     const errors = res3.body.errors[0];
     expect(errors).toBeDefined();
-    const messages = errors.extensions.originalError.message
+    const messages = errors.extensions.originalError.message;
     expect(messages).toEqual(
       expect.arrayContaining([
         expect.stringContaining('Invalid email address'),

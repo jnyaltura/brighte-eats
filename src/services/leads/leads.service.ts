@@ -15,7 +15,7 @@ export class LeadsService {
         mobile,
         postcode,
         services: {
-          create: services.map(type => ({ type })),
+          create: services.map((type) => ({ type })),
         },
       },
       include: {
