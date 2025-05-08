@@ -1,0 +1,25 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Lead {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  mobile    String
+  postcode  String
+  services  Service[]
+  createdAt DateTime @default(now())
+}
+
+model Service {
+  id      Int    @id @default(autoincrement())
+  type    String
+  leadId  Int
+  lead    Lead   @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}
