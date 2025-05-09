@@ -29,6 +29,9 @@ jobs:
 
       - name: Lint
         run: npm run lint
+      
+      - name: Database Generate
+        run: npm migrate
 
       - name: Run tests
         run: npm run test
