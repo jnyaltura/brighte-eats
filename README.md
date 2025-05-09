@@ -167,4 +167,4 @@ MIT
 
 ## 👤 Author
 
-Built for Brighte's Senior Backend Engineer take-home exercise by [Jan Nickson Altura].
+Built for Brighte's Senior Backend Engineer take-home exercise by Jan Nickson Altura.
