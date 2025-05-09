@@ -31,7 +31,7 @@ jobs:
         run: npm run lint
       
       - name: Database Generate
-        run: npm migrate
+        run: npm run migrate
 
       - name: Run tests
         run: npm run test
