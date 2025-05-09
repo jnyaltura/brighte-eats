@@ -1,21 +1,18 @@
-📄 README.md
-markdown
-Copy
-Edit
 # Brighte Eats Leads API
 
-Brighte Eats is a new product initiative by Brighte, and this backend API allows users to register interest in services (delivery, pick-up, payment). Admins can query leads via a simple GraphQL dashboard.
+A NestJS GraphQL API that allows users to register interest in Brighte Eats services (delivery, pick-up, payment). It stores lead data in a local SQLite database and exposes queries for dashboard usage.
 
 ---
 
 ## 🧰 Tech Stack
 
-- **Framework**: [NestJS](https://nestjs.com/) (with GraphQL)
+- **Backend**: NestJS
 - **Language**: TypeScript
-- **Database**: SQLite3 (via TypeORM)
-- **Validation**: `class-validator`
-- **Testing**: Jest + Supertest
 - **API Style**: GraphQL (code-first)
+- **Database**: SQLite (via TypeORM)
+- **Validation**: class-validator
+- **Testing**: Jest, Supertest
+- **CI/CD**: GitHub Actions
 
 ---
 
@@ -26,77 +23,31 @@ Brighte Eats is a new product initiative by Brighte, and this backend API allows
 ```bash
 git clone https://github.com/YOUR_USERNAME/brighte-eats.git
 cd brighte-eats
-2. Install dependencies
-bash
-Copy
-Edit
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
-3. Run the app
-bash
-Copy
-Edit
+```
+
+### 3. Run the app locally
+
+```bash
 npm run start:dev
-The GraphQL playground will be available at http://localhost:3000/graphql
+```
 
-📦 Features
-Mutations
-register(input: RegisterInput): Register a new lead with name, email, mobile, postcode, and selected services.
+GraphQL playground: [http://localhost:3000/graphql](http://localhost:3000/graphql)
 
-Queries
-leads: Get all registered leads.
+---
 
-lead(id: Int): Fetch a single lead by ID.
+## 📬 GraphQL Usage
 
-🧪 Testing
-bash
-Copy
-Edit
-npm run test
-Includes:
+Access the playground at: [http://localhost:3000/graphql](http://localhost:3000/graphql)
 
-✅ Successful lead registration
+### 🧾 Mutation: Register a Lead
 
-❌ Invalid input validation errors
-
-🔍 Query all leads
-
-🔎 Query lead by ID
-
-🧱 Database
-SQLite is used for simplicity in local development. The database is created in the root as data.sqlite.
-
-🔒 Validation
-All inputs are validated using class-validator. Invalid data will return meaningful GraphQL errors.
-
-🛣️ Roadmap
-✅ MVP
- Register mutation
-
- Fetch all/single leads
-
- Validation and error handling
-
- E2E testing with Jest
-
-🛠️ Future Enhancements
- Pagination and filtering for leads
-
- Admin authentication
-
- Email confirmation workflow
-
- Export leads to CSV
-
- Deployment (Docker + CI/CD)
-
-
- 📬 GraphQL Usage
-Access the playground at: http://localhost:3000/graphql
-
-🧾 Mutation: Register a Lead
-graphql
-Copy
-Edit
+```graphql
 mutation {
   register(input: {
     name: "Jane Doe",
@@ -113,10 +64,11 @@ mutation {
     }
   }
 }
-🔍 Query: Get All Leads
-graphql
-Copy
-Edit
+```
+
+### 🔍 Query: Get All Leads
+
+```graphql
 query {
   leads {
     id
@@ -129,10 +81,11 @@ query {
     }
   }
 }
-🔎 Query: Get a Single Lead by ID
-graphql
-Copy
-Edit
+```
+
+### 🔎 Query: Get a Single Lead by ID
+
+```graphql
 query {
   lead(id: 1) {
     id
@@ -143,16 +96,75 @@ query {
     }
   }
 }
+```
 
+---
 
-📜 License
+## 🧪 Testing
+
+Run unit and e2e tests:
+
+```bash
+npm run test
+```
+
+Includes:
+- Successful registration
+- Input validation
+- Lead query tests
+
+---
+
+## 🔒 Validation
+
+Input validation is enforced using `class-validator`:
+- Required fields: name, email, mobile, postcode, services
+- Valid email format
+- Mobile number pattern
+- Only allowed services: delivery, pick-up, payment
+
+---
+
+## ⚙️ CI/CD: GitHub Actions
+
+Continuous integration runs on:
+- Every `push` to `main`
+- Every `pull_request` to `main`
+
+### Workflow steps:
+- Install dependencies
+- Lint code
+- Run tests
+- Build application
+
+Workflow file: `.github/workflows/ci.yml`
+
+---
+
+## 🛣️ Roadmap
+
+### MVP
+- [x] Register mutation
+- [x] Fetch all/single leads
+- [x] Validation and error handling
+- [x] E2E tests
+- [x] GitHub Actions CI pipeline
+
+### Future Enhancements
+- [ ] Pagination and filtering on leads
+- [ ] Admin dashboard with authentication
+- [ ] Email verification flow
+- [ ] Export to CSV
+- [ ] Docker & cloud deployment (Fly.io, Railway, etc.)
+
+---
+
+## 📜 License
+
 MIT
 
-👤 Author
+---
+
+## 👤 Author
+
 Built for Brighte's Senior Backend Engineer take-home exercise by [Jan Nickson Altura].
-
-css
-Copy
-Edit
-
-Let me know if you want a section added for environment configuration or Docker setup.
