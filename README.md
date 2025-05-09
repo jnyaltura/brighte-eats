@@ -89,11 +89,67 @@ All inputs are validated using class-validator. Invalid data will return meaning
 
  Deployment (Docker + CI/CD)
 
+
+ 📬 GraphQL Usage
+Access the playground at: http://localhost:3000/graphql
+
+🧾 Mutation: Register a Lead
+graphql
+Copy
+Edit
+mutation {
+  register(input: {
+    name: "Jane Doe",
+    email: "jane@example.com",
+    mobile: "0400000000",
+    postcode: "2000",
+    services: ["delivery", "payment"]
+  }) {
+    id
+    name
+    email
+    services {
+      type
+    }
+  }
+}
+🔍 Query: Get All Leads
+graphql
+Copy
+Edit
+query {
+  leads {
+    id
+    name
+    email
+    mobile
+    postcode
+    services {
+      type
+    }
+  }
+}
+🔎 Query: Get a Single Lead by ID
+graphql
+Copy
+Edit
+query {
+  lead(id: 1) {
+    id
+    name
+    email
+    services {
+      type
+    }
+  }
+}
+
+
 📜 License
 MIT
 
 👤 Author
-Built for Brighte's Senior Backend Engineer take-home exercise by [Your Name].
+Built for Brighte's Senior Backend Engineer take-home exercise by [Jan Nickson Altura].
 
 css
 Copy
