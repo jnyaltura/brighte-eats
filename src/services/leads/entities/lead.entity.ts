@@ -29,5 +29,5 @@ export class Lead {
   services: Service[];
 
   @Field()
-  createdAt: string;
+  createdAt: Date;
 }

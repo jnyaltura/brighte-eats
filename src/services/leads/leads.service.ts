@@ -1,14 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { RegisterInput } from './dto/register.input';
+import { Lead } from './entities/lead.entity';
 
 @Injectable()
 export class LeadsService {
   constructor(private prisma: PrismaClient) {}
 
-  async createLead(input: RegisterInput) {
+  async createLead(input: RegisterInput):Promise<any> {
     const { name, email, mobile, postcode, services } = input;
-    return this.prisma.lead.create({
+    return await this.prisma.lead.create({
       data: {
         name,
         email,
@@ -24,12 +25,12 @@ export class LeadsService {
     });
   }
 
-  findAll() {
-    return this.prisma.lead.findMany({ include: { services: true } });
+  async findAll():Promise<Lead[]> {
+    return await this.prisma.lead.findMany({ include: { services: true } });
   }
 
-  findOne(id: number) {
-    return this.prisma.lead.findUnique({
+  async findOne(id: number):Promise<Lead|null> {
+    return await this.prisma.lead.findUnique({
       where: { id },
       include: { services: true },
     });
