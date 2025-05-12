@@ -165,6 +165,20 @@ MIT
 
 ---
 
+## 🧠 Design Patterns 
+
+To enhance maintainability, scalability, and clarity, the following design patterns can be applied to this project:
+
+- Factory Pattern: For encapsulating the creation of Lead entities and managing instantiation logic.
+- Strategy Pattern: To handle different lead intake sources (e.g., website, mobile) via interchangeable processing strategies.
+- Observer Pattern: Enables event-driven actions like sending notifications after lead creation.
+- Decorator Pattern: Leverages class-validator decorators on DTOs to enforce input validation rules.
+- Repository Pattern: Separates data access logic from business logic to promote cleaner service layers.
+
+These patterns are optional but recommended as the project scales.
+
+
+
 ## 👤 Author
 
 Built for Brighte's Senior Backend Engineer take-home exercise by Jan Nickson Altura.
