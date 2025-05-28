@@ -25,6 +25,14 @@ export class LeadsService {
     });
   }
 
+  async findAndPagination(page:number, limit:number): Promise<Lead[]> {
+    return await this.prisma.lead.findMany({ 
+      skip: (page - 1) * limit, 
+      take: limit, 
+      include: { services: true } 
+    })
+  }
+
   async findAll():Promise<Lead[]> {
     return await this.prisma.lead.findMany({ include: { services: true } });
   }

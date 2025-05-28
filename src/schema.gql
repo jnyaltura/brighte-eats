@@ -24,6 +24,7 @@ scalar DateTime
 
 type Query {
   leads: [Lead!]!
+  leadsWithPagination(page: Float!, limit: Float!): [Lead!]!
   lead(id: Float!): Lead!
 }
 

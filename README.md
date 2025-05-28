@@ -97,7 +97,17 @@ query {
   }
 }
 ```
-
+//add this
+query {
+  leadsWithPagination(page: 1, limit:3) {
+    id
+    name
+    email
+    services {
+      type
+    }
+  }
+}
 ---
 
 ## 🧪 Testing

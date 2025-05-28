@@ -17,6 +17,17 @@ export class LeadsResolver {
     }
   }
 
+  @Query(() => [Lead])
+  async leadsWithPagination(@Args('page') page: number, @Args('limit') limit: number): Promise<Lead[]> {
+    try {
+      return await this.leadsService.findAndPagination(page, limit);
+    } catch (error) {
+      console.error('Error fetching leads:', error);
+      throw new Error('Failed to fetch leads');
+    }
+  }
+
+
   @Query(() => Lead)
   async lead(@Args('id') id: number): Promise<Lead | null> {
     try {
